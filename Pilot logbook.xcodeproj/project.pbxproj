@@ -21,6 +21,7 @@
 		F168DB012B832D9B0009C273 /* PLTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DB002B832D9B0009C273 /* PLTabController.swift */; };
 		F168DB032B832F460009C273 /* PLFlightsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DB022B832F460009C273 /* PLFlightsCell.swift */; };
 		F168DB052B8350460009C273 /* PLAddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DB042B8350460009C273 /* PLAddController.swift */; };
+		F168DB072B83553E0009C273 /* PLAirplaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DB062B83553E0009C273 /* PLAirplaneController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		F168DB002B832D9B0009C273 /* PLTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLTabController.swift; sourceTree = "<group>"; };
 		F168DB022B832F460009C273 /* PLFlightsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLFlightsCell.swift; sourceTree = "<group>"; };
 		F168DB042B8350460009C273 /* PLAddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLAddController.swift; sourceTree = "<group>"; };
+		F168DB062B83553E0009C273 /* PLAirplaneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLAirplaneController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				F168DAFC2B8320D10009C273 /* PL3Controller.swift */,
 				F168DAFE2B83285F0009C273 /* PLFlightsController.swift */,
 				F168DB042B8350460009C273 /* PLAddController.swift */,
+				F168DB062B83553E0009C273 /* PLAirplaneController.swift */,
 				F168DB022B832F460009C273 /* PLFlightsCell.swift */,
 				F168DAE42B8317C60009C273 /* Assets.xcassets */,
 				F168DAE62B8317C60009C273 /* LaunchScreen.storyboard */,
@@ -175,6 +178,7 @@
 				F168DB012B832D9B0009C273 /* PLTabController.swift in Sources */,
 				F168DB032B832F460009C273 /* PLFlightsCell.swift in Sources */,
 				F168DAFF2B83285F0009C273 /* PLFlightsController.swift in Sources */,
+				F168DB072B83553E0009C273 /* PLAirplaneController.swift in Sources */,
 				F168DADE2B8317C40009C273 /* SceneDelegate.swift in Sources */,
 				F168DAFD2B8320D10009C273 /* PL3Controller.swift in Sources */,
 			);
