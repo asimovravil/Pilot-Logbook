@@ -129,7 +129,16 @@ final class PL3Controller: UIViewController {
     }
     
     @objc private func pilotLogbook2Type() {
-        print("good")
+        if let firstName = pilotLogbook3.text {
+            UserDefaults.standard.set(firstName, forKey: "username")
+        }
+        if let profileImage = pilotLogbook2.image(for: .normal) {
+            if let imageData = profileImage.jpegData(compressionQuality: 1.0) {
+                UserDefaults.standard.set(imageData, forKey: "userProfileImage")
+            }
+        }
+        let tabbarVC = PLFlightsController()
+        self.navigationController?.pushViewController(tabbarVC, animated: true)
     }
 }
 

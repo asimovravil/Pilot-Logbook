@@ -17,6 +17,7 @@
 		F168DAF52B831A860009C273 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F168DAF42B831A860009C273 /* SnapKit */; };
 		F168DAF72B831C270009C273 /* PL2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DAF62B831C270009C273 /* PL2Controller.swift */; };
 		F168DAFD2B8320D10009C273 /* PL3Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DAFC2B8320D10009C273 /* PL3Controller.swift */; };
+		F168DAFF2B83285F0009C273 /* PLFlightsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DAFE2B83285F0009C273 /* PLFlightsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		F168DAF02B831A400009C273 /* DroidSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DroidSans.ttf; sourceTree = "<group>"; };
 		F168DAF62B831C270009C273 /* PL2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PL2Controller.swift; sourceTree = "<group>"; };
 		F168DAFC2B8320D10009C273 /* PL3Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PL3Controller.swift; sourceTree = "<group>"; };
+		F168DAFE2B83285F0009C273 /* PLFlightsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLFlightsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				F168DADF2B8317C40009C273 /* PL1Controller.swift */,
 				F168DAF62B831C270009C273 /* PL2Controller.swift */,
 				F168DAFC2B8320D10009C273 /* PL3Controller.swift */,
+				F168DAFE2B83285F0009C273 /* PLFlightsController.swift */,
 				F168DAE42B8317C60009C273 /* Assets.xcassets */,
 				F168DAE62B8317C60009C273 /* LaunchScreen.storyboard */,
 				F168DAE92B8317C60009C273 /* Info.plist */,
@@ -159,6 +162,7 @@
 				F168DAF72B831C270009C273 /* PL2Controller.swift in Sources */,
 				F168DAE02B8317C40009C273 /* PL1Controller.swift in Sources */,
 				F168DADC2B8317C40009C273 /* AppDelegate.swift in Sources */,
+				F168DAFF2B83285F0009C273 /* PLFlightsController.swift in Sources */,
 				F168DADE2B8317C40009C273 /* SceneDelegate.swift in Sources */,
 				F168DAFD2B8320D10009C273 /* PL3Controller.swift in Sources */,
 			);
