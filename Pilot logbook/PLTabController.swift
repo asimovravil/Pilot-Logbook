@@ -8,6 +8,9 @@
 import UIKit
 
 final class PLTabController: UITabBarController {
+    
+    // MARK: - Properties
+    private var overlayView: UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +31,7 @@ final class PLTabController: UITabBarController {
         
     private func addedTabBarSetup() {
         let ta1VC = UINavigationController(rootViewController: PLFlightsController())
-        let ta2VC = UINavigationController(rootViewController: PL2Controller())
+        let ta2VC = UINavigationController(rootViewController: PLAddController())
         let ta3VC = UINavigationController(rootViewController: PL3Controller())
         
         UITabBar.appearance().shadowImage = UIImage()
@@ -57,13 +60,32 @@ final class PLTabController: UITabBarController {
 
 extension PLTabController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if let viewControllerIndex = tabBarController.viewControllers?.firstIndex(of: viewController), viewControllerIndex == 1 {
-            let expenseVC = PL2Controller()
+        if let viewControllerIndex = tabBarController.viewControllers?.firstIndex(of: viewController),
+           viewControllerIndex == 1 {
 
-            let ta3VC = UINavigationController(rootViewController: expenseVC)
-            present(ta3VC, animated: true, completion: nil)
+            overlayView = UIView(frame: self.view.bounds)
+            overlayView?.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+            
+            if let overlay = overlayView {
+                self.view.addSubview(overlay)
+                
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissOverlay))
+                overlay.addGestureRecognizer(tapGesture)
+            }
+
+            let addVC = PLAddController()
+            addVC.modalPresentationStyle = .overCurrentContext
+            addVC.modalTransitionStyle = .crossDissolve
+            present(addVC, animated: true, completion: nil)
+            
             return false
         }
         return true
+    }
+
+    @objc private func dismissOverlay() {
+        overlayView?.removeFromSuperview()
+        overlayView = nil
+        presentedViewController?.dismiss(animated: true, completion: nil)
     }
 }
