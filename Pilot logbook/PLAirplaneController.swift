@@ -11,6 +11,8 @@ import Photos
 
 final class PLAirplaneController: UIViewController {
     
+    var closeHandler: (() -> Void)?
+    
     private let pilotLogbook = UIView()
     private let pilotLogbook1 = UIImageView()
     private let pilotLogbook2 = UIButton(type: .custom)
@@ -82,9 +84,7 @@ final class PLAirplaneController: UIViewController {
     }
     
     @objc private func pilotLogbook2Type() {
-        let vc = PLTabController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     private func pl3() {

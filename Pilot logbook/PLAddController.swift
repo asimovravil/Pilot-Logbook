@@ -18,11 +18,18 @@ final class PLAddController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.clear
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         view.isOpaque = false
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
         
         pl1()
         pl2()
+    }
+    
+    @objc private func dismissKeyboard() {
+        dismiss(animated: true)
     }
     
     private func pl1() {

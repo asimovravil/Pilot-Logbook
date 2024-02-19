@@ -8,9 +8,6 @@
 import UIKit
 
 final class PLTabController: UITabBarController {
-    
-    // MARK: - Properties
-    private var overlayView: UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,16 +60,6 @@ extension PLTabController: UITabBarControllerDelegate {
         if let viewControllerIndex = tabBarController.viewControllers?.firstIndex(of: viewController),
            viewControllerIndex == 1 {
 
-            overlayView = UIView(frame: self.view.bounds)
-            overlayView?.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-            
-            if let overlay = overlayView {
-                self.view.addSubview(overlay)
-                
-                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissOverlay))
-                overlay.addGestureRecognizer(tapGesture)
-            }
-
             let addVC = PLAddController()
             addVC.modalPresentationStyle = .overCurrentContext
             addVC.modalTransitionStyle = .crossDissolve
@@ -81,11 +68,5 @@ extension PLTabController: UITabBarControllerDelegate {
             return false
         }
         return true
-    }
-
-    @objc private func dismissOverlay() {
-        overlayView?.removeFromSuperview()
-        overlayView = nil
-        presentedViewController?.dismiss(animated: true, completion: nil)
     }
 }
