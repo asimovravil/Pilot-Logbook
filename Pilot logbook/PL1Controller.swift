@@ -12,6 +12,7 @@ final class PL1Controller: UIViewController {
     
     private let pilotLogbook1 = UIImageView()
     private let pilotLogbook2 = UIButton(type: .system)
+    private let pilotLogbook = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,7 @@ final class PL1Controller: UIViewController {
         view.backgroundColor = UIColor(named: "plBack")
         pl1()
         pl2()
+        pl()
     }
     
     override func viewDidLayoutSubviews() {
@@ -51,6 +53,7 @@ final class PL1Controller: UIViewController {
         pilotLogbook2.setTitleColor(.white, for: .normal)
         pilotLogbook2.titleLabel?.font = UIFont(name: "DroidSans-Bold", size: 16)
         pilotLogbook2.backgroundColor = UIColor(named: "plRed")
+        pilotLogbook2.addTarget(self, action: #selector(pilotLogbook2Type), for: .touchUpInside)
         view.addSubview(pilotLogbook2)
         
         pilotLogbook2.snp.makeConstraints { make in
@@ -58,6 +61,23 @@ final class PL1Controller: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-40)
             make.height.equalTo(51)
         }
+    }
+    
+    private func pl() {
+        pilotLogbook.image = UIImage(named: "plp1")
+        view.addSubview(pilotLogbook)
+
+        pilotLogbook.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(12)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(4)
+        }
+    }
+    
+    @objc private func pilotLogbook2Type() {
+        let vc = PL2Controller()
+        vc.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
