@@ -10,7 +10,7 @@ import SnapKit
 import Photos
 
 protocol PLAirplaneControllerDelegate: AnyObject {
-    func didAddNewAirplane(image: String, name: String, desc: String)
+    func didAddNewAirplane(image: UIImage, name: String, desc: String)
 }
 
 final class PLAirplaneController: UIViewController {
@@ -183,7 +183,9 @@ final class PLAirplaneController: UIViewController {
     
     @objc private func pilotLogbook7Type() {
         if let name = pilotLogbook5.text, !name.isEmpty, let desc = pilotLogbook6.text, !desc.isEmpty {
-            delegate?.didAddNewAirplane(image: "image", name: name, desc: desc)
+            if let image = pilotLogbook3.image(for: .normal) {
+                delegate?.didAddNewAirplane(image: image, name: name, desc: desc)
+            }
             self.dismiss(animated: true)
         } else {
             let alert = UIAlertController(title: "Warning", message: "Please fill in all fields.", preferredStyle: .alert)
@@ -191,6 +193,7 @@ final class PLAirplaneController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+
 }
 
 extension PLAirplaneController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

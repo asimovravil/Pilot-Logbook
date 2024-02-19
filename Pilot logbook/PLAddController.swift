@@ -62,9 +62,3 @@ final class PLAddController: UIViewController {
         }
     }
 }
-
-extension PLAddController: PLAirplaneControllerDelegate {
-    func didAddNewAirplane(image: String, name: String, desc: String) {
-        print("New airplane added with image: \(image), name: \(name), desc: \(desc)")
-    }
-}

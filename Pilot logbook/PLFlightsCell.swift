@@ -13,7 +13,7 @@ final class PLFlightsCell: UITableViewCell {
     static let plID = String(describing: PLFlightsCell.self)
     
     private let pilotLogbook = UIView()
-    private let pilotLogbook1 = UIImageView()
+    public let pilotLogbook1 = UIImageView()
     public let pilotLogbook2 = UILabel()
     public let pilotLogbook3 = UILabel()
     private let pilotLogbook4 = UILabel()
@@ -36,6 +36,7 @@ final class PLFlightsCell: UITableViewCell {
         super.layoutSubviews()
         
         pilotLogbook.layer.cornerRadius = 12
+        pilotLogbook1.layer.cornerRadius = 6
     }
     
     private func pl() {
@@ -88,7 +89,7 @@ final class PLFlightsCell: UITableViewCell {
     }
     
     private func pl4() {
-        pilotLogbook4.text = "1 h"
+        pilotLogbook4.text = "now"
         pilotLogbook4.textColor = .white
         pilotLogbook4.numberOfLines = 0
         pilotLogbook4.font = UIFont(name: "Droid", size: 16)

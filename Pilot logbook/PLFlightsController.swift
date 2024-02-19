@@ -8,9 +8,10 @@
 import UIKit
 import SnapKit
 
-struct Order: Codable {
+struct Order {
     var name: String
     var desc: String
+    var image: UIImage?
 }
 
 final class PLFlightsController: UIViewController {
@@ -154,6 +155,7 @@ extension PLFlightsController: UITableViewDataSource, UITableViewDelegate {
         cell.backgroundColor = .clear
         
         let order = orders[indexPath.row]
+        cell.pilotLogbook1.image = order.image
         cell.pilotLogbook2.text = order.name
         cell.pilotLogbook3.text = order.desc
         return cell
@@ -166,8 +168,8 @@ extension PLFlightsController: UITableViewDataSource, UITableViewDelegate {
 
 
 extension PLFlightsController: PLAirplaneControllerDelegate {
-    func didAddNewAirplane(image: String, name: String, desc: String) {
-        let newOrder = Order(name: name, desc: desc)
+    func didAddNewAirplane(image: UIImage, name: String, desc: String) {
+        let newOrder = Order(name: name, desc: desc, image: image)
         orders.append(newOrder)
         
         DispatchQueue.main.async {
@@ -179,4 +181,3 @@ extension PLFlightsController: PLAirplaneControllerDelegate {
         print("Описание: \(desc)")
     }
 }
-
