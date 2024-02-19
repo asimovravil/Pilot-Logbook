@@ -31,11 +31,9 @@ final class PLTabController: UITabBarController {
         let ta2VC = UINavigationController(rootViewController: PL2Controller())
         let ta3VC = UINavigationController(rootViewController: PL3Controller())
         
-        tabBar.backgroundColor = UIColor(named: "background")
-        
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
-        UITabBar.appearance().backgroundColor = UIColor(named: "background")
+        UITabBar.appearance().backgroundColor = UIColor(named: "plTextField")
         
         ta1VC.tabBarItem = UITabBarItem(
             title: "", image: UIImage(named: "pltab1")?.withRenderingMode(.alwaysOriginal),

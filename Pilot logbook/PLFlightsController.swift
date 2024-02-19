@@ -13,17 +13,20 @@ final class PLFlightsController: UIViewController {
     private let pilotLogbook = UIImageView()
     private let pilotLogbook1 = UILabel()
     private let pilotLogbook2 = UILabel()
+    private let pilotLogbook3 = UITableView(frame: .zero, style: .plain)
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        pl()
         pl1()
         pl2()
         pl3()
         plB()
     }
     
-    private func pl1() {
+    private func pl() {
         pilotLogbook.image = UIImage(named: "plMG")
         view.addSubview(pilotLogbook)
         
@@ -34,7 +37,7 @@ final class PLFlightsController: UIViewController {
         }
     }
     
-    private func pl2() {
+    private func pl1() {
         pilotLogbook1.text = "All flights"
         pilotLogbook1.textColor = .white
         pilotLogbook1.font = UIFont(name: "DroidSans", size: 16)
@@ -47,16 +50,34 @@ final class PLFlightsController: UIViewController {
         }
     }
     
-    private func pl3() {
+    private func pl2() {
         pilotLogbook2.text = "No flights yet"
         pilotLogbook2.textColor = UIColor(named: "plGray")
         pilotLogbook2.font = UIFont(name: "DroidSans", size: 20)
         pilotLogbook2.textAlignment = .center
+        pilotLogbook2.isHidden = true
         view.addSubview(pilotLogbook2)
         
         pilotLogbook2.snp.makeConstraints { make in
             make.top.equalTo(pilotLogbook1.snp.bottom).offset(90)
             make.centerX.equalToSuperview()
+        }
+    }
+    
+    private func pl3() {
+        pilotLogbook3.register(PLFlightsCell.self, forCellReuseIdentifier: PLFlightsCell.plID)
+        pilotLogbook3.dataSource = self
+        pilotLogbook3.delegate = self
+        pilotLogbook3.backgroundColor = .clear
+        pilotLogbook3.rowHeight = 88
+        pilotLogbook3.showsVerticalScrollIndicator = false
+        pilotLogbook3.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(pilotLogbook3)
+        
+        pilotLogbook3.snp.makeConstraints { make in
+            make.top.equalTo(pilotLogbook1.snp.bottom).offset(16)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-6)
         }
     }
     
@@ -108,6 +129,26 @@ final class PLFlightsController: UIViewController {
     }
     
     @objc private func plRight() {
+        print("good")
+    }
+}
+
+extension PLFlightsController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PLFlightsCell.plID, for: indexPath) as? PLFlightsCell else {
+            fatalError("Could not cast to DaysCell")
+        }
+        cell.selectionStyle = .none
+        cell.backgroundColor = .clear
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("good")
     }
 }
