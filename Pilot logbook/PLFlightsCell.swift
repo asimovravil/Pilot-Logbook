@@ -14,8 +14,8 @@ final class PLFlightsCell: UITableViewCell {
     
     private let pilotLogbook = UIView()
     private let pilotLogbook1 = UIImageView()
-    private let pilotLogbook2 = UILabel()
-    private let pilotLogbook3 = UILabel()
+    public let pilotLogbook2 = UILabel()
+    public let pilotLogbook3 = UILabel()
     private let pilotLogbook4 = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

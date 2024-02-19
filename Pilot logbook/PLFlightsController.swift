@@ -8,14 +8,20 @@
 import UIKit
 import SnapKit
 
+struct Order: Codable {
+    var name: String
+    var desc: String
+}
+
 final class PLFlightsController: UIViewController {
+    
+    var orders = [Order]()
     
     private let pilotLogbook = UIImageView()
     private let pilotLogbook1 = UILabel()
     private let pilotLogbook2 = UILabel()
     private let pilotLogbook3 = UITableView(frame: .zero, style: .plain)
-
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,7 +105,7 @@ final class PLFlightsController: UIViewController {
         stackView.alignment = .center
         stackView.distribution = .equalSpacing
         stackView.spacing = 12
-
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: stackView)
         
         let navBarAppearance = UINavigationBarAppearance()
@@ -111,7 +117,7 @@ final class PLFlightsController: UIViewController {
         let rightImage = UIImage(named: "plRight")
         let rightBarButtonItem = UIBarButtonItem(image: rightImage, style: .plain, target: self, action: #selector(plRight))
         navigationItem.rightBarButtonItem = rightBarButtonItem
-                
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         if let username = UserDefaults.standard.string(forKey: "username"), !username.isEmpty {
@@ -119,7 +125,7 @@ final class PLFlightsController: UIViewController {
         } else {
             titleLabel.text = "Unknown"
         }
-
+        
         if let imageData = UserDefaults.standard.data(forKey: "userProfileImage"),
            let image = UIImage(data: imageData) {
             plC.image = image
@@ -137,7 +143,7 @@ final class PLFlightsController: UIViewController {
 extension PLFlightsController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return orders.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -146,6 +152,10 @@ extension PLFlightsController: UITableViewDataSource, UITableViewDelegate {
         }
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
+        
+        let order = orders[indexPath.row]
+        cell.pilotLogbook2.text = order.name
+        cell.pilotLogbook3.text = order.desc
         return cell
     }
     
@@ -153,3 +163,20 @@ extension PLFlightsController: UITableViewDataSource, UITableViewDelegate {
         print("good")
     }
 }
+
+
+extension PLFlightsController: PLAirplaneControllerDelegate {
+    func didAddNewAirplane(image: String, name: String, desc: String) {
+        let newOrder = Order(name: name, desc: desc)
+        orders.append(newOrder)
+        
+        DispatchQueue.main.async {
+            self.pilotLogbook3.reloadData()
+        }
+        
+        print("Добавлен новый самолет:")
+        print("Название: \(name)")
+        print("Описание: \(desc)")
+    }
+}
+

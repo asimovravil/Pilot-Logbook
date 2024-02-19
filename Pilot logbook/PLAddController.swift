@@ -11,6 +11,7 @@ import SnapKit
 final class PLAddController: UIViewController {
     
     var closeHandler: (() -> Void)?
+    var flightsController: PLFlightsController?
     
     private let pilotLogbook1 = UIButton(type: .custom)
     private let pilotLogbook2 = UIButton(type: .custom)
@@ -45,6 +46,7 @@ final class PLAddController: UIViewController {
     
     @objc private func pilotLogbook1Type() {
         let addVC = PLAirplaneController()
+        addVC.delegate = flightsController
         addVC.modalPresentationStyle = .overCurrentContext
         addVC.modalTransitionStyle = .crossDissolve
         present(addVC, animated: true, completion: nil)
@@ -58,5 +60,11 @@ final class PLAddController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(16)
             make.bottom.equalTo(pilotLogbook1.snp.top).offset(-8)
         }
+    }
+}
+
+extension PLAddController: PLAirplaneControllerDelegate {
+    func didAddNewAirplane(image: String, name: String, desc: String) {
+        print("New airplane added with image: \(image), name: \(name), desc: \(desc)")
     }
 }

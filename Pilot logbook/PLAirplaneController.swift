@@ -9,10 +9,14 @@ import UIKit
 import SnapKit
 import Photos
 
+protocol PLAirplaneControllerDelegate: AnyObject {
+    func didAddNewAirplane(image: String, name: String, desc: String)
+}
+
 final class PLAirplaneController: UIViewController {
     
-    var closeHandler: (() -> Void)?
-    
+    weak var delegate: PLAirplaneControllerDelegate?
+        
     private let pilotLogbook = UIView()
     private let pilotLogbook1 = UIImageView()
     private let pilotLogbook2 = UIButton(type: .custom)
@@ -166,7 +170,7 @@ final class PLAirplaneController: UIViewController {
         pilotLogbook7.setTitleColor(.white, for: .normal)
         pilotLogbook7.titleLabel?.font = UIFont(name: "DroidSans-Bold", size: 16)
         pilotLogbook7.backgroundColor = UIColor(named: "plRed")
-//        pilotLogbook7.addTarget(self, action: #selector(pilotLogbook2Type), for: .touchUpInside)
+        pilotLogbook7.addTarget(self, action: #selector(pilotLogbook7Type), for: .touchUpInside)
         view.addSubview(pilotLogbook7)
         
         pilotLogbook7.snp.makeConstraints { make in
@@ -174,6 +178,17 @@ final class PLAirplaneController: UIViewController {
             make.trailing.equalTo(pilotLogbook.snp.trailing).offset(-20)
             make.bottom.equalTo(pilotLogbook.snp.bottom).offset(-20)
             make.height.equalTo(51)
+        }
+    }
+    
+    @objc private func pilotLogbook7Type() {
+        if let name = pilotLogbook5.text, !name.isEmpty, let desc = pilotLogbook6.text, !desc.isEmpty {
+            delegate?.didAddNewAirplane(image: "image", name: name, desc: desc)
+            self.dismiss(animated: true)
+        } else {
+            let alert = UIAlertController(title: "Warning", message: "Please fill in all fields.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }

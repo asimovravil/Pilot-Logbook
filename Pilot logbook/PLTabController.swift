@@ -59,8 +59,14 @@ extension PLTabController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if let viewControllerIndex = tabBarController.viewControllers?.firstIndex(of: viewController),
            viewControllerIndex == 1 {
-
             let addVC = PLAddController()
+            
+            // Поиск PLFlightsController среди вкладок
+            if let navController = viewControllers?.first as? UINavigationController,
+               let flightsVC = navController.viewControllers.first as? PLFlightsController {
+                addVC.flightsController = flightsVC // Предполагается, что у вас есть такое свойство
+            }
+
             addVC.modalPresentationStyle = .overCurrentContext
             addVC.modalTransitionStyle = .crossDissolve
             present(addVC, animated: true, completion: nil)
