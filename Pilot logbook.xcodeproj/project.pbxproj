@@ -9,19 +9,24 @@
 /* Begin PBXBuildFile section */
 		F168DADC2B8317C40009C273 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DADB2B8317C40009C273 /* AppDelegate.swift */; };
 		F168DADE2B8317C40009C273 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DADD2B8317C40009C273 /* SceneDelegate.swift */; };
-		F168DAE02B8317C40009C273 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DADF2B8317C40009C273 /* ViewController.swift */; };
+		F168DAE02B8317C40009C273 /* PL1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DADF2B8317C40009C273 /* PL1Controller.swift */; };
 		F168DAE52B8317C60009C273 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F168DAE42B8317C60009C273 /* Assets.xcassets */; };
 		F168DAE82B8317C60009C273 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F168DAE62B8317C60009C273 /* LaunchScreen.storyboard */; };
+		F168DAF12B831A400009C273 /* DroidSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F168DAEF2B831A400009C273 /* DroidSans-Bold.ttf */; };
+		F168DAF22B831A400009C273 /* DroidSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F168DAF02B831A400009C273 /* DroidSans.ttf */; };
+		F168DAF52B831A860009C273 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F168DAF42B831A860009C273 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F168DAD82B8317C40009C273 /* Pilot logbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pilot logbook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F168DADB2B8317C40009C273 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F168DADD2B8317C40009C273 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F168DADF2B8317C40009C273 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F168DADF2B8317C40009C273 /* PL1Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PL1Controller.swift; sourceTree = "<group>"; };
 		F168DAE42B8317C60009C273 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F168DAE72B8317C60009C273 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F168DAE92B8317C60009C273 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F168DAEF2B831A400009C273 /* DroidSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DroidSans-Bold.ttf"; sourceTree = "<group>"; };
+		F168DAF02B831A400009C273 /* DroidSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DroidSans.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F168DAF52B831A860009C273 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,10 +62,12 @@
 			children = (
 				F168DADB2B8317C40009C273 /* AppDelegate.swift */,
 				F168DADD2B8317C40009C273 /* SceneDelegate.swift */,
-				F168DADF2B8317C40009C273 /* ViewController.swift */,
+				F168DADF2B8317C40009C273 /* PL1Controller.swift */,
 				F168DAE42B8317C60009C273 /* Assets.xcassets */,
 				F168DAE62B8317C60009C273 /* LaunchScreen.storyboard */,
 				F168DAE92B8317C60009C273 /* Info.plist */,
+				F168DAEF2B831A400009C273 /* DroidSans-Bold.ttf */,
+				F168DAF02B831A400009C273 /* DroidSans.ttf */,
 			);
 			path = "Pilot logbook";
 			sourceTree = "<group>";
@@ -80,6 +88,9 @@
 			dependencies = (
 			);
 			name = "Pilot logbook";
+			packageProductDependencies = (
+				F168DAF42B831A860009C273 /* SnapKit */,
+			);
 			productName = "Pilot logbook";
 			productReference = F168DAD82B8317C40009C273 /* Pilot logbook.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +119,9 @@
 				Base,
 			);
 			mainGroup = F168DACF2B8317C40009C273;
+			packageReferences = (
+				F168DAF32B831A860009C273 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = F168DAD92B8317C40009C273 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -122,6 +136,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F168DAF22B831A400009C273 /* DroidSans.ttf in Resources */,
+				F168DAF12B831A400009C273 /* DroidSans-Bold.ttf in Resources */,
 				F168DAE82B8317C60009C273 /* LaunchScreen.storyboard in Resources */,
 				F168DAE52B8317C60009C273 /* Assets.xcassets in Resources */,
 			);
@@ -134,7 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F168DAE02B8317C40009C273 /* ViewController.swift in Sources */,
+				F168DAE02B8317C40009C273 /* PL1Controller.swift in Sources */,
 				F168DADC2B8317C40009C273 /* AppDelegate.swift in Sources */,
 				F168DADE2B8317C40009C273 /* SceneDelegate.swift in Sources */,
 			);
@@ -349,6 +365,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F168DAF32B831A860009C273 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F168DAF42B831A860009C273 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F168DAF32B831A860009C273 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F168DAD02B8317C40009C273 /* Project object */;
 }
