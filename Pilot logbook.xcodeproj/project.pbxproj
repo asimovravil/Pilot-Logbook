@@ -18,6 +18,7 @@
 		F168DAF72B831C270009C273 /* PL2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DAF62B831C270009C273 /* PL2Controller.swift */; };
 		F168DAFD2B8320D10009C273 /* PL3Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DAFC2B8320D10009C273 /* PL3Controller.swift */; };
 		F168DAFF2B83285F0009C273 /* PLFlightsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DAFE2B83285F0009C273 /* PLFlightsController.swift */; };
+		F168DB012B832D9B0009C273 /* PLTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DB002B832D9B0009C273 /* PLTabController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		F168DAF62B831C270009C273 /* PL2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PL2Controller.swift; sourceTree = "<group>"; };
 		F168DAFC2B8320D10009C273 /* PL3Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PL3Controller.swift; sourceTree = "<group>"; };
 		F168DAFE2B83285F0009C273 /* PLFlightsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLFlightsController.swift; sourceTree = "<group>"; };
+		F168DB002B832D9B0009C273 /* PLTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLTabController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			children = (
 				F168DADB2B8317C40009C273 /* AppDelegate.swift */,
 				F168DADD2B8317C40009C273 /* SceneDelegate.swift */,
+				F168DB002B832D9B0009C273 /* PLTabController.swift */,
 				F168DADF2B8317C40009C273 /* PL1Controller.swift */,
 				F168DAF62B831C270009C273 /* PL2Controller.swift */,
 				F168DAFC2B8320D10009C273 /* PL3Controller.swift */,
@@ -162,6 +165,7 @@
 				F168DAF72B831C270009C273 /* PL2Controller.swift in Sources */,
 				F168DAE02B8317C40009C273 /* PL1Controller.swift in Sources */,
 				F168DADC2B8317C40009C273 /* AppDelegate.swift in Sources */,
+				F168DB012B832D9B0009C273 /* PLTabController.swift in Sources */,
 				F168DAFF2B83285F0009C273 /* PLFlightsController.swift in Sources */,
 				F168DADE2B8317C40009C273 /* SceneDelegate.swift in Sources */,
 				F168DAFD2B8320D10009C273 /* PL3Controller.swift in Sources */,
