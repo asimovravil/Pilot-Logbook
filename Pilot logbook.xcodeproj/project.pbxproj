@@ -15,6 +15,7 @@
 		F168DAF12B831A400009C273 /* DroidSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F168DAEF2B831A400009C273 /* DroidSans-Bold.ttf */; };
 		F168DAF22B831A400009C273 /* DroidSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F168DAF02B831A400009C273 /* DroidSans.ttf */; };
 		F168DAF52B831A860009C273 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F168DAF42B831A860009C273 /* SnapKit */; };
+		F168DAF72B831C270009C273 /* PL2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DAF62B831C270009C273 /* PL2Controller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		F168DAE92B8317C60009C273 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F168DAEF2B831A400009C273 /* DroidSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DroidSans-Bold.ttf"; sourceTree = "<group>"; };
 		F168DAF02B831A400009C273 /* DroidSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DroidSans.ttf; sourceTree = "<group>"; };
+		F168DAF62B831C270009C273 /* PL2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PL2Controller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				F168DADB2B8317C40009C273 /* AppDelegate.swift */,
 				F168DADD2B8317C40009C273 /* SceneDelegate.swift */,
 				F168DADF2B8317C40009C273 /* PL1Controller.swift */,
+				F168DAF62B831C270009C273 /* PL2Controller.swift */,
 				F168DAE42B8317C60009C273 /* Assets.xcassets */,
 				F168DAE62B8317C60009C273 /* LaunchScreen.storyboard */,
 				F168DAE92B8317C60009C273 /* Info.plist */,
@@ -150,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F168DAF72B831C270009C273 /* PL2Controller.swift in Sources */,
 				F168DAE02B8317C40009C273 /* PL1Controller.swift in Sources */,
 				F168DADC2B8317C40009C273 /* AppDelegate.swift in Sources */,
 				F168DADE2B8317C40009C273 /* SceneDelegate.swift in Sources */,
