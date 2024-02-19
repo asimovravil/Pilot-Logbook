@@ -137,8 +137,9 @@ final class PL3Controller: UIViewController {
                 UserDefaults.standard.set(imageData, forKey: "userProfileImage")
             }
         }
-        let tabbarVC = PLFlightsController()
-        self.navigationController?.pushViewController(tabbarVC, animated: true)
+        let tabbarVC = PLTabController()
+        tabbarVC.modalPresentationStyle = .fullScreen
+        self.present(tabbarVC, animated: true)
     }
 }
 

@@ -129,7 +129,8 @@ final class PLFlightsController: UIViewController {
     }
     
     @objc private func plRight() {
-        print("good")
+        let vc = PLSettingsController()
+        self.present(vc, animated: true)
     }
 }
 

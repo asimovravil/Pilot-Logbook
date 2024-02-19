@@ -33,7 +33,20 @@ final class PLSettingsController: UIViewController {
         pl4()
         pl5()
         plBar()
-        view.backgroundColor = UIColor(named: "plback")
+        view.backgroundColor = UIColor(named: "plBack")
+        
+        if let username = UserDefaults.standard.string(forKey: "username"), !username.isEmpty {
+            pilotVCLogbook2.text = username
+        } else {
+            pilotVCLogbook2.text = "Unknown"
+        }
+
+        if let imageData = UserDefaults.standard.data(forKey: "userProfileImage"),
+           let image = UIImage(data: imageData) {
+            pilotVCLogbook1.setImage(image, for: .normal)
+        } else {
+            pilotVCLogbook1.setImage(UIImage(named: "accountCamera"), for: .normal)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -138,12 +151,23 @@ final class PLSettingsController: UIViewController {
     
     private func pl5() {
         pilotLogbook5.setImage(UIImage(named: "plset5"), for: .normal)
+        pilotLogbook5.addTarget(self, action: #selector(pilotLogbook5Type), for: .touchUpInside)
         view.addSubview(pilotLogbook5)
         
         pilotLogbook5.snp.makeConstraints { make in
             make.top.equalTo(pilotLogbook4.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview().inset(16)
         }
+    }
+    
+    @objc private func pilotLogbook5Type() {
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+        
+        let vc = PL1Controller()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     
     private func plBar() {
