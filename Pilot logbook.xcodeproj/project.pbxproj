@@ -22,6 +22,8 @@
 		F168DB032B832F460009C273 /* PLFlightsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DB022B832F460009C273 /* PLFlightsCell.swift */; };
 		F168DB052B8350460009C273 /* PLAddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DB042B8350460009C273 /* PLAddController.swift */; };
 		F168DB072B83553E0009C273 /* PLAirplaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DB062B83553E0009C273 /* PLAirplaneController.swift */; };
+		F168DB0C2B8399D00009C273 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DB0A2B8399D00009C273 /* PrivacyViewController.swift */; };
+		F168DB0D2B8399D00009C273 /* PLSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168DB0B2B8399D00009C273 /* PLSettingsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		F168DB022B832F460009C273 /* PLFlightsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLFlightsCell.swift; sourceTree = "<group>"; };
 		F168DB042B8350460009C273 /* PLAddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLAddController.swift; sourceTree = "<group>"; };
 		F168DB062B83553E0009C273 /* PLAirplaneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLAirplaneController.swift; sourceTree = "<group>"; };
+		F168DB0A2B8399D00009C273 /* PrivacyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		F168DB0B2B8399D00009C273 /* PLSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLSettingsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 				F168DB042B8350460009C273 /* PLAddController.swift */,
 				F168DB062B83553E0009C273 /* PLAirplaneController.swift */,
 				F168DB022B832F460009C273 /* PLFlightsCell.swift */,
+				F168DB0B2B8399D00009C273 /* PLSettingsController.swift */,
+				F168DB0A2B8399D00009C273 /* PrivacyViewController.swift */,
 				F168DAE42B8317C60009C273 /* Assets.xcassets */,
 				F168DAE62B8317C60009C273 /* LaunchScreen.storyboard */,
 				F168DAE92B8317C60009C273 /* Info.plist */,
@@ -171,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F168DB0C2B8399D00009C273 /* PrivacyViewController.swift in Sources */,
 				F168DAF72B831C270009C273 /* PL2Controller.swift in Sources */,
 				F168DAE02B8317C40009C273 /* PL1Controller.swift in Sources */,
 				F168DADC2B8317C40009C273 /* AppDelegate.swift in Sources */,
@@ -181,6 +188,7 @@
 				F168DB072B83553E0009C273 /* PLAirplaneController.swift in Sources */,
 				F168DADE2B8317C40009C273 /* SceneDelegate.swift in Sources */,
 				F168DAFD2B8320D10009C273 /* PL3Controller.swift in Sources */,
+				F168DB0D2B8399D00009C273 /* PLSettingsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
