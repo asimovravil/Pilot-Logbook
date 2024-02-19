@@ -27,12 +27,20 @@ final class PLAddController: UIViewController {
     
     private func pl1() {
         pilotLogbook1.setImage(UIImage(named: "plairplane"), for: .normal)
+        pilotLogbook1.addTarget(self, action: #selector(pilotLogbook1Type), for: .touchUpInside)
         view.addSubview(pilotLogbook1)
         
         pilotLogbook1.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-86)
         }
+    }
+    
+    @objc private func pilotLogbook1Type() {
+        let addVC = PLAirplaneController()
+        addVC.modalPresentationStyle = .overCurrentContext
+        addVC.modalTransitionStyle = .crossDissolve
+        present(addVC, animated: true, completion: nil)
     }
     
     private func pl2() {

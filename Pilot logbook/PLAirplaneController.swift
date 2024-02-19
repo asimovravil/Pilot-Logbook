@@ -32,6 +32,9 @@ final class PLAirplaneController: UIViewController {
         pl5()
         pl6()
         pl7()
+        
+        view.backgroundColor = UIColor.clear
+        view.isOpaque = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -69,12 +72,19 @@ final class PLAirplaneController: UIViewController {
     
     private func pl2() {
         pilotLogbook2.setImage(UIImage(named: "plCloseAir"), for: .normal)
+        pilotLogbook2.addTarget(self, action: #selector(pilotLogbook2Type), for: .touchUpInside)
         view.addSubview(pilotLogbook2)
         
         pilotLogbook2.snp.makeConstraints { make in
             make.top.equalTo(pilotLogbook.snp.top).offset(20)
             make.trailing.equalTo(pilotLogbook.snp.trailing).offset(-20)
         }
+    }
+    
+    @objc private func pilotLogbook2Type() {
+        let vc = PLTabController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     
     private func pl3() {
