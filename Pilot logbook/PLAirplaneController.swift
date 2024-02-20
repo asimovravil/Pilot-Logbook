@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Photos
 
-protocol PLFlightControllerDelegate: AnyObject {
+protocol PLAviaControllerDelegate: AnyObject {
     func didAddNewFlight(order: Order)
     func saveOrders()
     func loadOrders()
@@ -17,7 +17,7 @@ protocol PLFlightControllerDelegate: AnyObject {
 
 final class PLAirplaneController: UIViewController {
     
-    weak var delegate: PLFlightControllerDelegate?
+    weak var delegate: PLAviaControllerDelegate?
     
     private let pilotLogbook = UIView()
     private let pilotLogbook1 = UIImageView()

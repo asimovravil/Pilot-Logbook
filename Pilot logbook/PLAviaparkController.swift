@@ -131,7 +131,7 @@ extension PLAviaparkController: UITableViewDataSource, UITableViewDelegate {
 }
 
 
-extension PLAviaparkController: PLFlightControllerDelegate {
+extension PLAviaparkController: PLAviaControllerDelegate {
     func didAddNewFlight(order: Order) {
         orders.append(order)
         pilotLogbook3.reloadData()

@@ -61,10 +61,14 @@ extension PLTabController: UITabBarControllerDelegate {
            viewControllerIndex == 1 {
             let addVC = PLAddController()
             
-            // Поиск PLFlightsController среди вкладок
             if let navController = viewControllers?.first as? UINavigationController,
                let flightsVC = navController.viewControllers.first as? PLFlightsController {
-                addVC.flightsController = flightsVC // Предполагается, что у вас есть такое свойство
+                addVC.flightsController = flightsVC
+            }
+            
+            if let navController = viewControllers?[2] as? UINavigationController,
+               let aviaVC = navController.viewControllers.first as? PLAviaparkController {
+                addVC.aviaparkController = aviaVC
             }
 
             addVC.modalPresentationStyle = .overCurrentContext

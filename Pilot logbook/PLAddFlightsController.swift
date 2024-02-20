@@ -8,10 +8,18 @@
 import UIKit
 import SnapKit
 
+protocol PLAddFlightsControllerDelegate: AnyObject {
+    func didAddNewFlight(with order: Order)
+}
+
 final class PLAddFlightsController: UIViewController {
     
+    weak var delegate: PLAddFlightsControllerDelegate?
+    
+    private var selectedImage: UIImage?
+    
     private var orderNames: [String] = []
-        
+    
     private let pilotLogbook = UIView()
     private let pilotLogbook1 = UIImageView()
     private let pilotLogbook2 = UIButton(type: .custom)
@@ -199,7 +207,7 @@ final class PLAddFlightsController: UIViewController {
         pilotLogbook7.setTitleColor(.white, for: .normal)
         pilotLogbook7.titleLabel?.font = UIFont(name: "DroidSans-Bold", size: 16)
         pilotLogbook7.backgroundColor = UIColor(named: "plRed")
-//        pilotLogbook7.addTarget(self, action: #selector(pilotLogbook7Type), for: .touchUpInside)
+        pilotLogbook7.addTarget(self, action: #selector(pilotLogbook7Type), for: .touchUpInside)
         view.addSubview(pilotLogbook7)
         
         pilotLogbook7.snp.makeConstraints { make in
@@ -210,19 +218,27 @@ final class PLAddFlightsController: UIViewController {
         }
     }
     
-//    @objc private func pilotLogbook7Type() {
-//        if let name = pilotLogbook5.text, !name.isEmpty, let desc = pilotLogbook6.text, !desc.isEmpty {
-//            if let image = pilotLogbook3.image(for: .normal) {
-//                let newOrder = Order(name: name, desc: desc, imageData: image.pngData())
-//                delegate?.didAddNewFlight(order: newOrder)
-//            }
-//            self.dismiss(animated: true)
-//        } else {
-//            let alert = UIAlertController(title: "Warning", message: "Please fill in all fields.", preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "OK", style: .default))
-//            self.present(alert, animated: true, completion: nil)
-//        }
-//    }
+    @objc private func pilotLogbook7Type() {
+        guard let name = pilotLogbook4.text, !name.isEmpty,
+              let purpose = pilotLogbook5.text, !purpose.isEmpty,
+              let specialEvents = pilotLogbook6.text, !specialEvents.isEmpty,
+              let image = self.selectedImage else {
+            let alert = UIAlertController(title: "Warning", message: "Please fill in all fields and select an image.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true, completion: nil)
+            return
+        }
+
+        var newOrder = Order(name: name, desc: purpose)
+        newOrder.setImage(image) 
+
+        delegate?.didAddNewFlight(with: newOrder)
+
+        print("Attempting to add new flight with image.")
+        dismiss(animated: true) {
+            print("Dismissed add flight view controller.")
+        }
+    }
 }
 
 extension PLAddFlightsController: UIPickerViewDataSource, UIPickerViewDelegate {

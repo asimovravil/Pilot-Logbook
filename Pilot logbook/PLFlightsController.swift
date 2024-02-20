@@ -40,8 +40,6 @@ final class PLFlightsController: UIViewController {
         pl2()
         pl3()
         plB()
-        
-        loadOrders()
     }
     
     private func pl() {
@@ -177,27 +175,12 @@ extension PLFlightsController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-
-extension PLFlightsController: PLFlightControllerDelegate {
-    func didAddNewFlight(order: Order) {
-        orders.append(order)
-        pilotLogbook3.reloadData()
-        saveOrders()
-    }
-    
-    func saveOrders() {
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(orders) {
-            UserDefaults.standard.set(encoded, forKey: "orders")
-        }
-    }
-    
-    func loadOrders() {
-        if let savedOrders = UserDefaults.standard.object(forKey: "orders") as? Data {
-            let decoder = JSONDecoder()
-            if let loadedOrders = try? decoder.decode([Order].self, from: savedOrders) {
-                orders = loadedOrders
-            }
+extension PLFlightsController: PLAddFlightsControllerDelegate {
+    func didAddNewFlight(with order: Order) {
+        DispatchQueue.main.async {
+            self.orders.append(order)
+            self.pilotLogbook3.reloadData()
         }
     }
 }
+

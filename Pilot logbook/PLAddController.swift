@@ -12,6 +12,7 @@ final class PLAddController: UIViewController {
     
     var closeHandler: (() -> Void)?
     var flightsController: PLFlightsController?
+    var aviaparkController: PLAviaparkController?
     
     private let pilotLogbook1 = UIButton(type: .custom)
     private let pilotLogbook2 = UIButton(type: .custom)
@@ -46,7 +47,7 @@ final class PLAddController: UIViewController {
     
     @objc private func pilotLogbook1Type() {
         let addVC = PLAirplaneController()
-        addVC.delegate = flightsController
+        addVC.delegate = aviaparkController
         addVC.modalPresentationStyle = .overCurrentContext
         addVC.modalTransitionStyle = .crossDissolve
         present(addVC, animated: true, completion: nil)
@@ -54,11 +55,20 @@ final class PLAddController: UIViewController {
     
     private func pl2() {
         pilotLogbook2.setImage(UIImage(named: "plflight"), for: .normal)
+        pilotLogbook2.addTarget(self, action: #selector(pilotLogbook2Type), for: .touchUpInside)
         view.addSubview(pilotLogbook2)
         
         pilotLogbook2.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
             make.bottom.equalTo(pilotLogbook1.snp.top).offset(-8)
         }
+    }
+    
+    @objc private func pilotLogbook2Type() {
+        let addVC = PLAddFlightsController()
+        addVC.delegate = flightsController
+        addVC.modalPresentationStyle = .overCurrentContext
+        addVC.modalTransitionStyle = .crossDissolve
+        present(addVC, animated: true, completion: nil)
     }
 }
