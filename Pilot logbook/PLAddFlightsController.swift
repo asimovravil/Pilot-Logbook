@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 final class PLAddFlightsController: UIViewController {
+    
+    private var orderNames: [String] = []
         
     private let pilotLogbook = UIView()
     private let pilotLogbook1 = UIImageView()
@@ -32,6 +34,8 @@ final class PLAddFlightsController: UIViewController {
         pl6()
         pl7()
         
+        loadOrdersNames()
+        
         view.backgroundColor = UIColor.clear
         view.isOpaque = false
         
@@ -41,6 +45,15 @@ final class PLAddFlightsController: UIViewController {
     
     @objc private func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    private func loadOrdersNames() {
+        if let savedOrders = UserDefaults.standard.object(forKey: "orders") as? Data {
+            let decoder = JSONDecoder()
+            if let loadedOrders = try? decoder.decode([Order].self, from: savedOrders) {
+                orderNames = loadedOrders.map { $0.name }
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -94,6 +107,8 @@ final class PLAddFlightsController: UIViewController {
     
     private func pl3() {
         view.addSubview(pilotLogbook3)
+        pilotLogbook3.dataSource = self
+        pilotLogbook3.delegate = self
         pilotLogbook3.backgroundColor = UIColor(named: "plBack")
         
         pilotLogbook3.snp.makeConstraints { make in
@@ -208,4 +223,36 @@ final class PLAddFlightsController: UIViewController {
 //            self.present(alert, animated: true, completion: nil)
 //        }
 //    }
+}
+
+extension PLAddFlightsController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return orderNames.count
+    }
+    
+    // MARK: UIPickerViewDelegate Methods
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return orderNames[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label: UILabel
+        if let view = view as? UILabel {
+            label = view
+        } else {
+            label = UILabel()
+        }
+        
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = UIFont(name: "DroidSans", size: 16)
+        label.text = orderNames[row]
+        
+        return label
+    }
 }
