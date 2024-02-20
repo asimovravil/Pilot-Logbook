@@ -29,7 +29,7 @@ final class PLTabController: UITabBarController {
     private func addedTabBarSetup() {
         let ta1VC = UINavigationController(rootViewController: PLFlightsController())
         let ta2VC = UINavigationController(rootViewController: PLAddController())
-        let ta3VC = UINavigationController(rootViewController: PL3Controller())
+        let ta3VC = UINavigationController(rootViewController: PLAviaparkController())
         
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
