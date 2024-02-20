@@ -40,6 +40,8 @@ final class PLFlightsController: UIViewController {
         pl2()
         pl3()
         plB()
+        
+        loadData()
     }
     
     private func pl() {
@@ -164,7 +166,7 @@ extension PLFlightsController: UITableViewDataSource, UITableViewDelegate {
         cell.backgroundColor = .clear
         
         let order = orders[indexPath.row]
-        cell.pilotLogbook1.image = order.image
+        cell.pilotLogbook1.image = UIImage(named: "air")
         cell.pilotLogbook2.text = order.name
         cell.pilotLogbook3.text = order.desc
         return cell
@@ -180,6 +182,28 @@ extension PLFlightsController: PLAddFlightsControllerDelegate {
         DispatchQueue.main.async {
             self.orders.append(order)
             self.pilotLogbook3.reloadData()
+            self.saveData()
+        }
+    }
+    
+    private func saveData() {
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(orders)
+            UserDefaults.standard.set(data, forKey: "savedOrders")
+        } catch {
+            print("Unable to encode orders (\(error))")
+        }
+    }
+
+    private func loadData() {
+        let decoder = JSONDecoder()
+        if let data = UserDefaults.standard.data(forKey: "savedOrders") {
+            do {
+                orders = try decoder.decode([Order].self, from: data)
+            } catch {
+                print("Unable to decode orders (\(error))")
+            }
         }
     }
 }

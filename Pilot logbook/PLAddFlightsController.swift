@@ -15,9 +15,7 @@ protocol PLAddFlightsControllerDelegate: AnyObject {
 final class PLAddFlightsController: UIViewController {
     
     weak var delegate: PLAddFlightsControllerDelegate?
-    
-    private var selectedImage: UIImage?
-    
+        
     private var orderNames: [String] = []
     
     private let pilotLogbook = UIView()
@@ -221,20 +219,17 @@ final class PLAddFlightsController: UIViewController {
     @objc private func pilotLogbook7Type() {
         guard let name = pilotLogbook4.text, !name.isEmpty,
               let purpose = pilotLogbook5.text, !purpose.isEmpty,
-              let specialEvents = pilotLogbook6.text, !specialEvents.isEmpty,
-              let image = self.selectedImage else {
-            let alert = UIAlertController(title: "Warning", message: "Please fill in all fields and select an image.", preferredStyle: .alert)
+              let specialEvents = pilotLogbook6.text, !specialEvents.isEmpty else {
+            let alert = UIAlertController(title: "Warning", message: "Please fill in all fields.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             present(alert, animated: true, completion: nil)
             return
         }
 
-        var newOrder = Order(name: name, desc: purpose)
-        newOrder.setImage(image) 
+        let newOrder = Order(name: name, desc: purpose)
 
         delegate?.didAddNewFlight(with: newOrder)
 
-        print("Attempting to add new flight with image.")
         dismiss(animated: true) {
             print("Dismissed add flight view controller.")
         }
