@@ -9,13 +9,15 @@ import UIKit
 import SnapKit
 import Photos
 
-protocol PLAirplaneControllerDelegate: AnyObject {
-    func didAddNewAirplane(image: UIImage, name: String, desc: String)
+protocol PLFlightControllerDelegate: AnyObject {
+    func didAddNewFlight(order: Order)
+    func saveOrders()
+    func loadOrders()
 }
 
 final class PLAirplaneController: UIViewController {
     
-    weak var delegate: PLAirplaneControllerDelegate?
+    weak var delegate: PLFlightControllerDelegate?
         
     private let pilotLogbook = UIView()
     private let pilotLogbook1 = UIImageView()
@@ -184,7 +186,8 @@ final class PLAirplaneController: UIViewController {
     @objc private func pilotLogbook7Type() {
         if let name = pilotLogbook5.text, !name.isEmpty, let desc = pilotLogbook6.text, !desc.isEmpty {
             if let image = pilotLogbook3.image(for: .normal) {
-                delegate?.didAddNewAirplane(image: image, name: name, desc: desc)
+                let newOrder = Order(name: name, desc: desc, imageData: image.pngData())
+                delegate?.didAddNewFlight(order: newOrder)
             }
             self.dismiss(animated: true)
         } else {
@@ -193,7 +196,6 @@ final class PLAirplaneController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
-
 }
 
 extension PLAirplaneController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
