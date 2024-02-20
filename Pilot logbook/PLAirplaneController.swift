@@ -18,7 +18,7 @@ protocol PLFlightControllerDelegate: AnyObject {
 final class PLAirplaneController: UIViewController {
     
     weak var delegate: PLFlightControllerDelegate?
-        
+    
     private let pilotLogbook = UIView()
     private let pilotLogbook1 = UIImageView()
     private let pilotLogbook2 = UIButton(type: .custom)
@@ -27,10 +27,10 @@ final class PLAirplaneController: UIViewController {
     private let pilotLogbook5 = UITextField()
     private let pilotLogbook6 = UITextField()
     private let pilotLogbook7 = UIButton(type: .system)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = UIColor(named: "plBack")
         pl()
         pl1()
@@ -43,6 +43,13 @@ final class PLAirplaneController: UIViewController {
         
         view.backgroundColor = UIColor.clear
         view.isOpaque = false
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     override func viewDidLayoutSubviews() {
@@ -52,7 +59,7 @@ final class PLAirplaneController: UIViewController {
         pilotLogbook5.layer.cornerRadius = 16
         pilotLogbook6.layer.cornerRadius = 16
         pilotLogbook7.layer.cornerRadius = 12
-
+        
         pilotLogbook3.layer.cornerRadius = 12
         pilotLogbook3.clipsToBounds = true
     }
