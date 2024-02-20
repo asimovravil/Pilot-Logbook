@@ -77,7 +77,7 @@ final class PL1Controller: UIViewController {
     @objc private func pilotLogbook2Type() {
         let vc = PL2Controller()
         vc.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: false)
     }
 }
 
