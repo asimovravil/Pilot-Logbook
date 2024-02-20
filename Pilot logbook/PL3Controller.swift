@@ -113,6 +113,13 @@ final class PL3Controller: UIViewController {
         }
     }
     
+    private func showErrorMessage() {
+        let alertController = UIAlertController(title: "Error", message: "Please enter a name longer than three characters", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     private func pl4() {
         pilotLogbook4.setTitle("Continue", for: .normal)
         pilotLogbook4.setTitleColor(.white, for: .normal)
@@ -129,17 +136,20 @@ final class PL3Controller: UIViewController {
     }
     
     @objc private func pilotLogbook2Type() {
-        if let firstName = pilotLogbook3.text {
-            UserDefaults.standard.set(firstName, forKey: "username")
+        guard let firstName = pilotLogbook3.text, firstName.count > 3 else {
+            showErrorMessage()
+            return
         }
-        if let profileImage = pilotLogbook2.image(for: .normal) {
-            if let imageData = profileImage.jpegData(compressionQuality: 1.0) {
-                UserDefaults.standard.set(imageData, forKey: "userProfileImage")
-            }
+        
+        UserDefaults.standard.set(firstName, forKey: "username")
+        
+        if let profileImage = pilotLogbook2.image(for: .normal), let imageData = profileImage.jpegData(compressionQuality: 1.0) {
+            UserDefaults.standard.set(imageData, forKey: "userProfileImage")
         }
+        
         let tabbarVC = PLTabController()
         tabbarVC.modalPresentationStyle = .fullScreen
-        self.present(tabbarVC, animated: true)
+        present(tabbarVC, animated: true)
     }
 }
 
