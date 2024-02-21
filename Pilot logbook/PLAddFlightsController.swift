@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol PLAddFlightsControllerDelegate: AnyObject {
-    func didAddNewFlight(with order: Order)
+    func didAddNewFlight(with order: PilotLogbook)
 }
 
 final class PLAddFlightsController: UIViewController {
@@ -56,7 +56,7 @@ final class PLAddFlightsController: UIViewController {
     private func loadOrdersNames() {
         if let savedOrders = UserDefaults.standard.object(forKey: "orders") as? Data {
             let decoder = JSONDecoder()
-            if let loadedOrders = try? decoder.decode([Order].self, from: savedOrders) {
+            if let loadedOrders = try? decoder.decode([PilotLogbook].self, from: savedOrders) {
                 orderNames = loadedOrders.map { $0.name }
             }
         }
@@ -226,7 +226,7 @@ final class PLAddFlightsController: UIViewController {
             return
         }
 
-        let newOrder = Order(name: name, desc: purpose)
+        let newOrder = PilotLogbook(name: name, desc: purpose)
 
         delegate?.didAddNewFlight(with: newOrder)
 

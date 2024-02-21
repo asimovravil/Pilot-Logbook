@@ -10,7 +10,7 @@ import SnapKit
 
 final class PLAviaparkController: UIViewController {
     
-    var orders = [Order]()
+    var orders = [PilotLogbook]()
     
     private let pilotLogbook2 = UIImageView()
     private let pilotLogbook3 = UITableView(frame: .zero, style: .plain)
@@ -132,7 +132,7 @@ extension PLAviaparkController: UITableViewDataSource, UITableViewDelegate {
 
 
 extension PLAviaparkController: PLAviaControllerDelegate {
-    func didAddNewFlight(order: Order) {
+    func didAddNewFlight(order: PilotLogbook) {
         orders.append(order)
         pilotLogbook3.reloadData()
         saveOrders()
@@ -148,7 +148,7 @@ extension PLAviaparkController: PLAviaControllerDelegate {
     func loadOrders() {
         if let savedOrders = UserDefaults.standard.object(forKey: "orders") as? Data {
             let decoder = JSONDecoder()
-            if let loadedOrders = try? decoder.decode([Order].self, from: savedOrders) {
+            if let loadedOrders = try? decoder.decode([PilotLogbook].self, from: savedOrders) {
                 orders = loadedOrders
             }
         }

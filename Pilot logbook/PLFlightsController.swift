@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-struct Order: Codable {
+struct PilotLogbook: Codable {
     var name: String
     var desc: String
     var imageData: Data?
@@ -25,7 +25,7 @@ struct Order: Codable {
 
 final class PLFlightsController: UIViewController {
     
-    var orders = [Order]()
+    var orders = [PilotLogbook]()
     
     private let pilotLogbook = UIImageView()
     private let pilotLogbook1 = UILabel()
@@ -178,7 +178,7 @@ extension PLFlightsController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension PLFlightsController: PLAddFlightsControllerDelegate {
-    func didAddNewFlight(with order: Order) {
+    func didAddNewFlight(with order: PilotLogbook) {
         DispatchQueue.main.async {
             self.orders.append(order)
             self.pilotLogbook3.reloadData()
@@ -200,7 +200,7 @@ extension PLFlightsController: PLAddFlightsControllerDelegate {
         let decoder = JSONDecoder()
         if let data = UserDefaults.standard.data(forKey: "savedOrders") {
             do {
-                orders = try decoder.decode([Order].self, from: data)
+                orders = try decoder.decode([PilotLogbook].self, from: data)
             } catch {
                 print("Unable to decode orders (\(error))")
             }

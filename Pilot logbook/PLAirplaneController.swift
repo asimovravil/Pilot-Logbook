@@ -10,7 +10,7 @@ import SnapKit
 import Photos
 
 protocol PLAviaControllerDelegate: AnyObject {
-    func didAddNewFlight(order: Order)
+    func didAddNewFlight(order: PilotLogbook)
     func saveOrders()
     func loadOrders()
 }
@@ -193,7 +193,7 @@ final class PLAirplaneController: UIViewController {
     @objc private func pilotLogbook7Type() {
         if let name = pilotLogbook5.text, !name.isEmpty, let desc = pilotLogbook6.text, !desc.isEmpty {
             if let image = pilotLogbook3.image(for: .normal) {
-                let newOrder = Order(name: name, desc: desc, imageData: image.pngData())
+                let newOrder = PilotLogbook(name: name, desc: desc, imageData: image.pngData())
                 delegate?.didAddNewFlight(order: newOrder)
             }
             self.dismiss(animated: true)
