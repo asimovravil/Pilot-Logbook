@@ -3,7 +3,7 @@ import WebKit
 
 class PrivacyController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
-    let urlToLoad = "https://doc-hosting.flycricket.io/avix-party-game-privacy-policy/29451367-8a3b-46ad-8756-e1ad162eab05/privacy" 
+    let urlToLoad = "https://www.app-privacy-policy.com/live.php?token=ZaB6Ttwwr16tfWSAmgBNANLVlPVBSocd" 
     override func loadView() {
         webView = WKWebView()
         webView.navigationDelegate = self

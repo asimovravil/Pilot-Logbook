@@ -161,15 +161,19 @@ final class PLSettingsController: UIViewController {
     }
     
     @objc private func pilotLogbook5Type() {
-        let domain = Bundle.main.bundleIdentifier!
-        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.removeObject(forKey: "username")
+        UserDefaults.standard.removeObject(forKey: "userProfileImage")
         UserDefaults.standard.synchronize()
         
         let vc = PL1Controller()
         let navigationController = UINavigationController(rootViewController: vc)
         navigationController.modalPresentationStyle = .fullScreen
-        self.present(navigationController, animated: true, completion: nil)
+
+        self.dismiss(animated: true) {
+            UIApplication.shared.keyWindow?.rootViewController?.present(navigationController, animated: true, completion: nil)
+        }
     }
+
     
     private func plBar() {
         let titleLabel = UILabel()
@@ -214,7 +218,7 @@ final class PLSettingsController: UIViewController {
     
     @objc func pilotLogbook4Type() {
         let controller = PrivacyController()
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.present(controller, animated: true)
     }
 }
 

@@ -143,6 +143,9 @@ final class PL3Controller: UIViewController {
         
         UserDefaults.standard.set(firstName, forKey: "username")
         
+        UserDefaults.standard.set(true, forKey: "ass")
+        print("Value of 'ass' key is set to true")
+        
         if let profileImage = pilotLogbook2.image(for: .normal), let imageData = profileImage.jpegData(compressionQuality: 1.0) {
             UserDefaults.standard.set(imageData, forKey: "userProfileImage")
         }
