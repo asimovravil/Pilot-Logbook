@@ -166,8 +166,9 @@ final class PLSettingsController: UIViewController {
         UserDefaults.standard.synchronize()
         
         let vc = PL1Controller()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+        let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.modalPresentationStyle = .fullScreen
+        self.present(navigationController, animated: true, completion: nil)
     }
     
     private func plBar() {
