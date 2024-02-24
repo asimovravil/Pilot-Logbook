@@ -161,19 +161,22 @@ final class PLSettingsController: UIViewController {
     }
     
     @objc private func pilotLogbook5Type() {
+        // Удаляем данные пользователя
         UserDefaults.standard.removeObject(forKey: "username")
         UserDefaults.standard.removeObject(forKey: "userProfileImage")
         UserDefaults.standard.synchronize()
-        
-        let vc = PL1Controller()
-        let navigationController = UINavigationController(rootViewController: vc)
-        navigationController.modalPresentationStyle = .fullScreen
 
-        self.dismiss(animated: true) {
-            UIApplication.shared.keyWindow?.rootViewController?.present(navigationController, animated: true, completion: nil)
+        // Создаем новый корневой контроллер
+        DispatchQueue.main.async {
+            if let sceneDelegate = UIApplication.shared.connectedScenes
+                .first(where: { $0.activationState == .foregroundActive })?.delegate as? SceneDelegate {
+                let vc = PL1Controller()
+                let navigationController = UINavigationController(rootViewController: vc)
+                sceneDelegate.window?.rootViewController = navigationController
+                sceneDelegate.window?.makeKeyAndVisible()
+            }
         }
     }
-
     
     private func plBar() {
         let titleLabel = UILabel()
